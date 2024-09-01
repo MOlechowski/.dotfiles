@@ -24,19 +24,31 @@ if [ ! -f ".Brewfile" ]; then
 fi
 
 # Copy .Brewfile to home directory as .Brewfile
-echo "Copying .Brewfile to home directory as .Brewfile. ..."
+echo "Copying .Brewfile to home directory as .Brewfile..."
 cp .Brewfile ~/.Brewfile
 
 # Install packages from .Brewfile
-echo "Installing packages from ..Brewfile. ..."
+echo "Installing packages from .Brewfile..."
 brew bundle --global --verbose
 
 # Add zsh-autosuggestions to .zshrc if it's not already there
 if ! grep -q "zsh-autosuggestions.zsh" ~/.zshrc; then
-    echo "Adding zsh-autosuggestions to .zshrc. ..."
+    echo "Adding zsh-autosuggestions to .zshrc..."
     echo "source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
 else
     echo "zsh-autosuggestions is already in .zshrc."
+fi
+
+# Create ~/.config/aerospace directory if it doesn't exist
+mkdir -p ~/.config/aerospace
+
+# Copy aerospace.toml to ~/.config/aerospace
+if [ -f "aerospace.toml" ]; then
+    echo "Copying aerospace.toml to ~/.config/aerospace..."
+    cp aerospace.toml ~/.config/aerospace/
+else
+    echo "aerospace.toml not found in the current directory."
+    echo "Please make sure aerospace.toml exists in the current directory."
 fi
 
 echo "Installation complete!"
