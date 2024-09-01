@@ -51,6 +51,14 @@ else
     echo "zsh-vim-mode is already in plugins in .zshrc."
 fi
 
+# Set KEYTIMEOUT in .zshrc if it's not already set
+if ! grep -q "KEYTIMEOUT=" ~/.zshrc; then
+    echo "Setting KEYTIMEOUT in .zshrc..."
+    echo "export KEYTIMEOUT=1" >> ~/.zshrc
+else
+    echo "KEYTIMEOUT is already set in .zshrc."
+fi
+
 # Create ~/.config/aerospace directory if it doesn't exist
 mkdir -p ~/.config/aerospace
 
