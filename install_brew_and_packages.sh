@@ -41,7 +41,7 @@ fi
 
 # Install zsh-vim-mode plugin
 echo "Installing zsh-vim-mode plugin..."
-git clone https://github.com/softmoth/zsh-vim-mode.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-vim-mode
+git clone https://github.com/softmoth/zsh-vim-mode.git ~/.oh-my-zsh/plugins/zsh-vim-mode
 
 # Add zsh-vim-mode to plugins in .zshrc if it's not already there
 if ! grep -q "zsh-vim-mode" ~/.zshrc; then
