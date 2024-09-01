@@ -39,6 +39,18 @@ else
     echo "zsh-autosuggestions is already in .zshrc."
 fi
 
+# Install zsh-vim-mode plugin
+echo "Installing zsh-vim-mode plugin..."
+git clone https://github.com/softmoth/zsh-vim-mode.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-vim-mode
+
+# Add zsh-vim-mode to plugins in .zshrc if it's not already there
+if ! grep -q "zsh-vim-mode" ~/.zshrc; then
+    echo "Adding zsh-vim-mode to plugins in .zshrc..."
+    sed -i '' 's/plugins=(git)/plugins=(git zsh-vim-mode)/' ~/.zshrc
+else
+    echo "zsh-vim-mode is already in plugins in .zshrc."
+fi
+
 # Create ~/.config/aerospace directory if it doesn't exist
 mkdir -p ~/.config/aerospace
 
