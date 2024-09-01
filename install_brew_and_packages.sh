@@ -16,17 +16,27 @@ else
     echo "Homebrew is already installed."
 fi
 
-# Check if Brewfile exists
-if [ ! -f "Brewfile" ]; then
-    echo "Brewfile not found in the current directory."
-    echo "Please create a Brewfile or specify its path."
+# Check if .Brewfile exists in the current directory
+if [ ! -f ".Brewfile" ]; then
+    echo ".Brewfile not found in the current directory."
+    echo "Please create a .Brewfile in the current directory."
     exit 1
 fi
 
-# Install packages from Brewfile
-echo "Installing packages from Brewfile..."
-brew bundle
+# Copy .Brewfile to home directory as .Brewfile
+echo "Copying .Brewfile to home directory as .Brewfile. ..."
+cp .Brewfile ~/.Brewfile
 
-echo "source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
+# Install packages from .Brewfile
+echo "Installing packages from ..Brewfile. ..."
+brew bundle --global --verbose
+
+# Add zsh-autosuggestions to .zshrc if it's not already there
+if ! grep -q "zsh-autosuggestions.zsh" ~/.zshrc; then
+    echo "Adding zsh-autosuggestions to .zshrc. ..."
+    echo "source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
+else
+    echo "zsh-autosuggestions is already in .zshrc."
+fi
 
 echo "Installation complete!"
