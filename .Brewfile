@@ -7,7 +7,6 @@ tap "nikitabobko/tap"
 # Command Line Tools
 brew "git"
 brew "gh"
-
 brew "zsh-autosuggestions"
 
 # Applications
@@ -15,3 +14,4 @@ brew "zsh-autosuggestions"
 cask "wezterm"
 cask "aerospace" 
 cask "nikitabobko/tap/aerospace"
+cask "font-meslo-lg-nerd-font"
