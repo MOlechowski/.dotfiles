@@ -71,4 +71,13 @@ else
     echo "Please make sure aerospace.toml exists in the current directory."
 fi
 
+# Copy .wezterm.lua to home directory
+if [ -f ".wezterm.lua" ]; then
+    echo "Copying .wezterm.lua to home directory..."
+    cp .wezterm.lua ~/
+else
+    echo ".wezterm.lua not found in the current directory."
+    echo "Please make sure .wezterm.lua exists in the current directory."
+fi
+
 echo "Installation complete!"
