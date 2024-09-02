@@ -6,6 +6,13 @@ config.font = wezterm.font("MesloLGS Nerd Font Mono")
 config.font_size = 19
 
 config.enable_tab_bar = false
+config.audible_bell = "Disabled"
+
+
+wezterm.on('bell', function(window, pane)
+  wezterm.log_info('the bell was rung in pane ' .. pane:pane_id() .. '!')
+end)
+
 
 config.window_decorations = "RESIZE"
 
