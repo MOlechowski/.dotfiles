@@ -77,7 +77,8 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git
+	 zsh-vim-mode)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -122,5 +123,9 @@ setopt hist_ignore_dups
 setopt hist_verify
 
 # completion using arrow keys (based on history)
+bindkey -v
 bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+export KEYTIMEOUT=1
