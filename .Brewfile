@@ -8,6 +8,7 @@ tap "nikitabobko/tap"
 brew "git"
 brew "gh"
 brew "zsh-autosuggestions"
+brew "neovim"
 
 # Applications
 
